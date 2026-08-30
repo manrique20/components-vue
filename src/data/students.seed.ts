@@ -1,0 +1,48 @@
+import type { Student } from '../types/models'
+
+export const studentsSeed: Student[] = [
+  {
+    id: 1,
+    nombre: 'Juan Sebastián Manrique',
+    email: 'est.juan.smanrique@unimilitar.edu.co',
+    telefono: 3108097564,
+    fechaNacimiento: new Date('2000-04-26'),
+    cursoId: 1,
+    estado: 'activo',
+    fechaInscripcion: new Date('2026-01-20'),
+    avatar: 'https://i.pravatar.cc/150?img=12',
+  },
+  {
+    id: 2,
+    nombre: 'María Fernanda López',
+    email: 'maria.lopez@correo.edu.co',
+    telefono: 3109876543,
+    fechaNacimiento: new Date('2000-07-25'),
+    cursoId: 2,
+    estado: 'activo',
+    fechaInscripcion: new Date('2026-01-22'),
+    avatar: 'https://i.pravatar.cc/150?img=32',
+  },
+  {
+    id: 3,
+    nombre: 'Andrés Felipe Torres',
+    email: 'andres.torres@correo.edu.co',
+    telefono: 3204567890,
+    fechaNacimiento: new Date('1999-11-03'),
+    cursoId: 5,
+    estado: 'inactivo',
+    fechaInscripcion: new Date('2025-08-10'),
+    avatar: 'https://i.pravatar.cc/150?img=51',
+  },
+  {
+    id: 4,
+    nombre: 'Camila Andrea Ríos',
+    email: 'camila.rios@correo.edu.co',
+    telefono: 3157654321,
+    fechaNacimiento: new Date('2002-05-17'),
+    cursoId: 3,
+    estado: 'activo',
+    fechaInscripcion: new Date('2026-02-02'),
+    avatar: 'https://i.pravatar.cc/150?img=47',
+  },
+]
