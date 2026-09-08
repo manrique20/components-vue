@@ -32,17 +32,17 @@ export class StudentService {
   }
 
   async list(): Promise<Student[]> {
-    const { data } = await this.request('/students')
+    const { data } = await this.request('students')
     return data.map((student: any) => this.toStudent(student))
   }
 
   async findById(id: number): Promise<Student | undefined> {
-    const { data } = await this.request(`/students/${id}`)
+    const { data } = await this.request(`students/${id}`)
     return this.toStudent(data)
   }
 
   async add(input: StudentInput): Promise<ApiResult<Student>> {
-    const { data, message } = await this.request('/students', {
+    const { data, message } = await this.request('students', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(this.toApi(input)),
@@ -51,7 +51,7 @@ export class StudentService {
   }
 
   async update(id: number, input: StudentInput): Promise<ApiResult<Student>> {
-    const { data, message } = await this.request(`/students/${id}`, {
+    const { data, message } = await this.request(`students/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(this.toApi(input)),
@@ -60,7 +60,7 @@ export class StudentService {
   }
 
   async remove(id: number): Promise<ApiResult<null>> {
-    const { data, message } = await this.request(`/students/${id}`, { method: 'DELETE' })
+    const { data, message } = await this.request(`students/${id}`, { method: 'DELETE' })
     return { data, message }
   }
 
