@@ -3,8 +3,6 @@ import { useToast } from 'primevue/usetoast'
 import type { Student, StudentInput } from '../types/models'
 import { StudentService } from '../services/StudentService'
 
-// Instancia única del servicio para toda la app (estado compartido simple,
-// sin necesidad de una librería de manejo de estado externa para esta demo).
 const service = new StudentService()
 const students = ref<Student[]>([])
 

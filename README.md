@@ -7,6 +7,11 @@ La aplicación es un ejemplo funcional de gestión de estudiantes y cursos que i
 **8 componentes** de PrimeVue (más del mínimo de 5 exigido por la actividad), además de
 componentes de apoyo (`Button`, `Tag`, `Avatar`, `Message`).
 
+## 0. URL DEL VIDEO
+
+https://youtu.be/EIyi1L76wxw
+
+
 ## 1. Requisitos previos
 
 - [Node.js](https://nodejs.org/) 20.19+ o 22.12+ (requerido por Vite). Verificar con:

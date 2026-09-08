@@ -49,10 +49,10 @@ const responsiveOptions = [
     <p class="hint">Arrastra el control deslizante para comparar las dos imágenes.</p>
     <ImageCompare class="image-compare">
       <template #left>
-        <img src="https://picsum.photos/seed/imagecompare-izquierda/800/500" alt="Imagen izquierda de ejemplo" />
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&h=500&q=80" alt="Imagen izquierda de ejemplo" />
       </template>
       <template #right>
-        <img src="https://picsum.photos/seed/imagecompare-derecha/800/500" alt="Imagen derecha de ejemplo" />
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&h=500&q=80" alt="Imagen derecha de ejemplo" />
       </template>
     </ImageCompare>
   </div>
