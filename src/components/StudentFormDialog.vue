@@ -87,6 +87,7 @@ const dialogTitle = computed(() => {
   if (props.mode === 'edit') return 'Editar estudiante'
   return 'Confirmar eliminación'
 })
+
 </script>
 
 <template>

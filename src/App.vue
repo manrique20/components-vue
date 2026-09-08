@@ -6,6 +6,7 @@ import TabList from 'primevue/tablist'
 import Tab from 'primevue/tab'
 import TabPanels from 'primevue/tabpanels'
 import TabPanel from 'primevue/tabpanel'
+import Toast from 'primevue/toast'
 import AppDrawer from './components/AppDrawer.vue'
 import StudentsPanel from './components/StudentsPanel.vue'
 import CoursesPanel from './components/CoursesPanel.vue'
@@ -20,6 +21,7 @@ function onNavigate(tab: '0' | '1') {
 
 <template>
   <div class="app-shell">
+    <Toast />
     <header class="app-header">
       <Button icon="pi pi-bars" text severity="secondary" aria-label="Menú" @click="drawerVisible = true" />
       <h1>Gestión de Estudiantes y Cursos</h1>

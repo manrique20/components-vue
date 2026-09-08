@@ -1,31 +1,71 @@
 import { ref } from 'vue'
+import { useToast } from 'primevue/usetoast'
 import type { Student, StudentInput } from '../types/models'
 import { StudentService } from '../services/StudentService'
 
 // Instancia única del servicio para toda la app (estado compartido simple,
 // sin necesidad de una librería de manejo de estado externa para esta demo).
 const service = new StudentService()
-const students = ref<Student[]>(service.list())
+const students = ref<Student[]>([])
 
-const refresh = () => {
-  students.value = service.list()
+export const refresh = async () => {
+  students.value = await service.list()
 }
 
 export const useStudents = () => {
-  const addStudent = (input: StudentInput) => {
-    service.add(input)
-    refresh()
+  const toast = useToast()
+
+  const notifyError = (error: unknown) => {
+    toast.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: error instanceof Error ? error.message : 'Ocurrió un error inesperado',
+      life: 4000,
+    })
   }
 
-  const updateStudent = (id: number, input: StudentInput) => {
-    service.update(id, input)
-    refresh()
+  const notifySuccess = (message: string) => {
+    toast.add({ severity: 'success', summary: 'Éxito', detail: message, life: 3000 })
   }
 
-  const removeStudent = (id: number) => {
-    service.remove(id)
-    refresh()
+  const addStudent = async (input: StudentInput) => {
+    try {
+      const { message } = await service.add(input)
+      notifySuccess(message)
+      await refresh()
+    } catch (error) {
+      notifyError(error)
+    }
   }
 
-  return { students, addStudent, updateStudent, removeStudent }
+  const getStudentById = async (id: number) => {
+    try {
+      return await service.findById(id)
+    } catch (error) {
+      notifyError(error)
+      return undefined
+    }
+  }
+
+  const updateStudent = async (id: number, input: StudentInput) => {
+    try {
+      const { message } = await service.update(id, input)
+      notifySuccess(message)
+      await refresh()
+    } catch (error) {
+      notifyError(error)
+    }
+  }
+
+  const removeStudent = async (id: number) => {
+    try {
+      const { message } = await service.remove(id)
+      notifySuccess(message)
+      await refresh()
+    } catch (error) {
+      notifyError(error)
+    }
+  }
+
+  return { students, addStudent, updateStudent, removeStudent, getStudentById }
 }

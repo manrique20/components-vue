@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
 import Button from 'primevue/button'
 import Tag from 'primevue/tag'
 import Avatar from 'primevue/avatar'
 import StudentFormDialog from './StudentFormDialog.vue'
-import { useStudents } from '../composables/useStudents'
+import { useStudents, refresh } from '../composables/useStudents'
 import { useCourses } from '../composables/useCourses'
 import type { Student, StudentInput } from '../types/models'
 
@@ -36,6 +36,7 @@ const openDelete = (student: Student) => {
 }
 
 const onSave = (input: StudentInput, id: number | null) => {
+
   if (id === null) addStudent(input)
   else updateStudent(id, input)
 }
@@ -47,6 +48,9 @@ const onConfirmDelete = (id: number) => {
 const formatDate = (date: Date) => {
   return new Date(date).toLocaleDateString('es-CO', { year: 'numeric', month: 'short', day: 'numeric' })
 }
+onMounted(() => {
+  refresh()
+})
 </script>
 
 <template>
